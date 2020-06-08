@@ -41,21 +41,29 @@ function removeSkill(mentors,newSkill){
 function addStudentLikes(mentors){
   //your code here
 }
-*/ 
+*/
 
 var mentors = [
   {
     firstName: "Antonio",
     lastName: "Miranda",
-    skills: ["JS","React","Node"],
+    skills: ["JS", "React", "Node"],
     class: "Mar1",
     studentLikes: 0,
-    job:
-      {
-        company: "Google",
-        position: "Senior developer",
-        city: "Barcelona"
+    addSkill: newSkills => {
+      if (!this.skills.includes(newSkills)) {
+        this.skills.push(newSkills)
       }
+    },
+    addLikes : newLikes => {
+      this.studentLikes.push(newLikes)
+    },
+    job:
+    {
+      company: "Google",
+      position: "Senior developer",
+      city: "Barcelona"
+    }
   },
   {
     firstName: "Leo",
@@ -63,41 +71,121 @@ var mentors = [
     skills: ["Play football"],
     class: "Mar3",
     studentLikes: 0,
-    job:
-      {
-        company: "FC Barcelona",
-        position: "Player",
-        city: "Barcelona"
+    addSkill: newSkills => {
+      if (!this.skills.includes(newSkills)) {
+        this.skills.push(newSkills)
       }
+    },
+    addLikes : newLikes => {
+      this.studentLikes.push(newLikes)
+    },
+    job:
+    {
+      company: "FC Barcelona",
+      position: "Player",
+      city: "Barcelona"
+    }
   },
   {
     firstName: "John",
     lastName: "VanDamme",
-    skills: ["React","Angular","Python","Node"],
+    skills: ["React", "Angular", "Python", "Node"],
     class: "Mar4",
     studentLikes: 0,
-    job:
-      {
-        company: "Facebook",
-        position: "Software Manager",
-        city: "Chicago"
+    addSkill: newSkills => {
+      if (!this.skills.includes(newSkills)) {
+        this.skills.push(newSkills)
       }
-  },  
+    },
+    addLikes : newLikes => {
+      this.studentLikes.push(newLikes)
+    },
+    job:
+    {
+      company: "Facebook",
+      position: "Software Manager",
+      city: "Chicago"
+    }
+  },
   {
     firstName: "Giorgio",
     lastName: "Polvara",
-    skills: ["HTML","JS","React"],
+    skills: ["HTML", "JS", "React"],
     class: "Mar2",
     studentLikes: 0,
-    job:
-      {
-        company: "Amazon",
-        position: "Senior developer",
-        city: "Barcelona"
+    addSkill: newSkills => {
+      if (!this.skills.includes(newSkills)) {
+        this.skills.push(newSkills)
       }
+    },
+    addLikes : newLikes => {
+      this.studentLikes.push(newLikes)
+    },
+    job:
+    {
+      company: "Amazon",
+      position: "Senior developer",
+      city: "Barcelona"
+    }
   },
 
 ];
 
 //YOUR CODE HERE
 
+//exercise 1
+for (let i = 0; i < mentors.length; i++) {
+  if (mentors[i].job.city === "Barcelona" && mentors[i].skills.includes("React")) {
+    console.log(`Hi, my name is ${mentors[i].firstName} ${mentors[i].lastName} I work in Barcelona and i know React.`)
+  }
+}
+
+//exercise 2
+for (let i = 0; i < mentors.length; i++) {
+  if (mentors[i].job.city === "Barcelona") {
+    mentors[i].class = "Jun1"
+    if (!mentors[i].skills.includes("SQL")) {
+      mentors[i].skills.push("SQL")
+    }
+  }
+  console.log(`Hi, my name is ${mentors[i].firstName} ${mentors[i].lastName}. I work in Barcelona. Class is ${mentors[i].class} and skills ${mentors[i].skills}`)
+}
+
+//exercise 4
+let addSkill = (mentorsList, newSkills) => {
+  for (let i = 0; i < mentorsList.length; i++) {
+    if (!mentorsList[i].skills.includes(newSkills)) {
+      mentorsList[i].skills.push(newSkills)
+    }
+  }
+}
+
+//exercise 5
+function removeSkill(mentors, skill) {
+  for (let i = 0; i < mentors.length; i++) {
+    mentorsList[i].skills.splice(skill)
+  }
+}
+
+//exercise 6
+function mentorWithMoreSkills(listOfMentors){
+   let mentorWithMaxSkills = null;
+   let maxSkills = 0;
+ for (let i = 0; i < listOfMentors.length; i++){
+   if (listOfMentors[i].skills.length >= maxSkills){
+     maxSkills = listOfMentors[i].skills.length
+     mentorWithMaxSkills = listOfMentors[i]
+   }
+ }
+ return mentorWithMaxSkills
+}
+
+let mentorA = mentorWithMoreSkills(mentors);
+console.log(`Mentor with more skills is ${mentorA.firstName}`)
+
+// exercise 8
+function addLikes(mentorsList, newLikes){
+  for(let i = 0; i < mentorsList.length; i++){
+    mentorsList[i].studentLikes.push(newLikes)
+  }
+}
