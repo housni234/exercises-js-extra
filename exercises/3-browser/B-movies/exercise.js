@@ -55,13 +55,30 @@ var movies = [
     director: "Leigh Whannell",
     type: "horror",
     haveWatched: false,
-  },
+  }
 ];
 
+
 // create showMovies function
-
-
+function showMovies(){
+  for(let i = 0; i < movies.length; i++){
+    let movieInfo = document.createElement("p");
+    let myMovies = document.getElementById("all-movies");
+    myMovies.appendChild(movieInfo)
+    movieInfo.innerHTML = "Movie:" + " "+ movies[i].title+" "+"Director:" +" "+ movies[i].director
+  }
+};
+setTimeout(showMovies, 1000)
 // create a new movie object for your favorite movie
-
+function addmovie(movie){
+  
+}
 
 // create addMovies function
+
+// {
+//   title: "Fight Club",
+//   director: "David Fincher",
+//   type: "Drama",
+//   haveWatched: true, 
+// }
