@@ -60,25 +60,48 @@ var movies = [
 
 
 // create showMovies function
-function showMovies(){
-  for(let i = 0; i < movies.length; i++){
+function showMovies() {
+  let moviesNumber = document.getElementById("movies-number");
+  moviesNumber.innerHTML = movies.length;
+  for (let i = 0; i < movies.length; i++) {
     let movieInfo = document.createElement("p");
     let myMovies = document.getElementById("all-movies");
     myMovies.appendChild(movieInfo)
-    movieInfo.innerHTML = "Movie:" + " "+ movies[i].title+" "+"Director:" +" "+ movies[i].director
+    movieInfo.innerHTML = "Movie:" + " " + movies[i].title + ", " + "Director:" + " " + movies[i].director
   }
 };
-setTimeout(showMovies, 1000)
+
+
+
 // create a new movie object for your favorite movie
-function addmovie(movie){
-  
+let myFavoriteMovie = {
+  title: "Fight Club",
+  director: "David Fincher",
+  type: "Drama",
+  haveWatched: true,
 }
 
 // create addMovies function
+function addMovies(movie, callback) {
+  setTimeout(() => {
+    movies.push(movie)
+    setTimeout(() => callback(movies), 2000)
+  }, 1000)
+}
+addMovies(myFavoriteMovie, showMovies);
 
-// {
-//   title: "Fight Club",
-//   director: "David Fincher",
-//   type: "Drama",
-//   haveWatched: true, 
-// }
+//create the form
+let form = document.createElement("FORM")
+document.body.appendChild(form)
+
+let inputTitle = document.createElement("INPUT")
+let inputDirector = document.createElement("INPUT")
+let inputType = document.createElement("INPUT")
+let inputHaveWatched = document.createElement("INPUT")
+let button = document.createElement("BUTTON")
+
+form.appendChild(inputTitle)
+form.appendChild(inputDirector)
+form.appendChild(inputType)
+form.appendChild(inputHaveWatched)
+form.appendChild(button)
